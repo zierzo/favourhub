@@ -60,10 +60,10 @@ CREATE TABLE `Collaborator` (
   `AddressID` bigint(20) DEFAULT NULL,
   `CreationDate` datetime NOT NULL,
   `LastModifiedAt` datetime DEFAULT NULL,
-  `Active` bit(1) NOT NULL DEFAULT b'1',
+  `Active` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`ID`),
-  KEY `fk_Collaborator_1_idx` (`AddressID`),
-  CONSTRAINT `fk_Collaborator_1` FOREIGN KEY (`AddressID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Collaborator_Address_idx` (`AddressID`),
+  CONSTRAINT `fk_Collaborator_Address` FOREIGN KEY (`AddressID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
