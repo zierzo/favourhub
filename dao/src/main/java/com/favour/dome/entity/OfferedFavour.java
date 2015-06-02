@@ -1,9 +1,6 @@
 package com.favour.dome.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by fernando on 26/05/15.
@@ -12,18 +9,18 @@ import javax.persistence.Id;
 public class OfferedFavour {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", unique=true, nullable=false)
-    private Long id;
+    private Integer id;
 
     @Column(name="Favour", length=120, nullable=false)
     private String favour;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

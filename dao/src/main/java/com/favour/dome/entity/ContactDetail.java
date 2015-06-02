@@ -9,9 +9,9 @@ import javax.persistence.*;
 public class ContactDetail {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", unique=true, nullable=false)
-    private Long id;
+    private Integer id;
 
     @Column(name="Contact", length=45, nullable=false)
     private String contact;
@@ -26,11 +26,11 @@ public class ContactDetail {
     @Column(name="Active", columnDefinition="BIT default b'1'", nullable=false)
     private boolean active=true;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

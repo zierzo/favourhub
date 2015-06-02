@@ -22,9 +22,9 @@ DROP TABLE IF EXISTS `Country`;
 CREATE TABLE `Country` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Country` varchar(45) NOT NULL,
-  PRIMARY KEY (`ID`,`Country`)
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `Country_UNIQUE` (`Country`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 --
@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `Address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Address` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `City` varchar(45) NOT NULL,
   `CountryID` int(11) NOT NULL,
   `Address` varchar(120) DEFAULT NULL,
@@ -55,20 +55,20 @@ DROP TABLE IF EXISTS `Collaborator`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Collaborator` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Email` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
   `FirstName` varchar(20) NOT NULL,
   `LastName` varchar(20) NOT NULL,
   `NickName` varchar(45) DEFAULT NULL,
-  `AddressID` bigint(20) DEFAULT NULL,
+  `AddressID` int(11) DEFAULT NULL,
   `CreationDate` datetime NOT NULL,
   `LastModifiedAt` datetime DEFAULT NULL,
   `Active` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   KEY `FK_Collaborator_Address_idx` (`AddressID`),
-  CONSTRAINT `fk_Collaborator_Address` FOREIGN KEY (`AddressID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_Collaborator_Address` FOREIGN KEY (`AddressID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -92,12 +92,12 @@ DROP TABLE IF EXISTS `ContactDetail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ContactDetail` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Contact` varchar(45) NOT NULL,
   `ContactTypeID` int(11) NOT NULL,
   `Preferred` bit(1) DEFAULT b'0',
   `Active` bit(1) DEFAULT b'1',
-  `CollaboratorID` bigint(20) DEFAULT NULL,
+  `CollaboratorID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_Contact_1_idx` (`CollaboratorID`),
   KEY `FK_Contact_Type_idx` (`ContactTypeID`),
@@ -129,8 +129,8 @@ DROP TABLE IF EXISTS `OfferedFavour`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `OfferedFavour` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `CollaboratorID` bigint(20) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CollaboratorID` int(11) NOT NULL,
   `Favour` varchar(120) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_OfferedFavour_Collaborator_idx` (`CollaboratorID`),

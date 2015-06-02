@@ -9,9 +9,9 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", unique=true, nullable=false)
-    private Long id;
+    private Integer id;
 
     @Column(name="City", length=45, nullable=false)
     private String city;
@@ -26,11 +26,11 @@ public class Address {
     @Column(name="ZipCode", length=45)
     private String zipCode;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

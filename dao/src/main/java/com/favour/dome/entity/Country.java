@@ -1,9 +1,6 @@
 package com.favour.dome.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by fernando on 26/05/15.
@@ -12,11 +9,12 @@ import javax.persistence.Id;
 public class Country {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", unique=true, nullable=false)
     private Integer id;
 
-    @Column(name="Country", length=45, nullable=false)
+    @Column(name="Country", length=45, nullable=false, unique = true)
+
     private String country;
 
     public Integer getId() {

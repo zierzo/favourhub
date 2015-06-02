@@ -2,7 +2,7 @@ package com.favour.dome.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by fernando on 26/05/15.
@@ -11,9 +11,9 @@ import java.util.Set;
 public class Collaborator {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", unique=true, nullable=false)
-    private Long id;
+    private Integer id;
 
     @Column(name="Email", length=45, unique=true, nullable=false)
     private String email;
@@ -34,13 +34,13 @@ public class Collaborator {
     @MapsId
     private Address address;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="CollaboratorID", nullable=false)
-    private Set<ContactDetail> contactDetails;
+    private List<ContactDetail> contactDetails;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="CollaboratorID", nullable=false)
-    private Set<OfferedFavour> offeredFavours;
+    private List<OfferedFavour> offeredFavours;
 
     @Temporal(TemporalType.DATE)
     @Column(name="CreationDate", nullable=false)
@@ -53,11 +53,11 @@ public class Collaborator {
     @Column(name="Active", columnDefinition="BIT default b'0'", nullable=false)
     private Boolean active=true;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -109,19 +109,19 @@ public class Collaborator {
         this.address = address;
     }
 
-    public Set<ContactDetail> getContactDetails() {
+    public List<ContactDetail> getContactDetails() {
         return contactDetails;
     }
 
-    public void setContactDetails(Set<ContactDetail> contactDetails) {
+    public void setContactDetails(List<ContactDetail> contactDetails) {
         this.contactDetails = contactDetails;
     }
 
-    public Set<OfferedFavour> getOfferedFavours() {
+    public List<OfferedFavour> getOfferedFavours() {
         return offeredFavours;
     }
 
-    public void setOfferedFavours(Set<OfferedFavour> offeredFavours) {
+    public void setOfferedFavours(List<OfferedFavour> offeredFavours) {
         this.offeredFavours = offeredFavours;
     }
 
