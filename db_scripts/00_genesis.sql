@@ -61,14 +61,12 @@ CREATE TABLE `Collaborator` (
   `FirstName` varchar(20) NOT NULL,
   `LastName` varchar(20) NOT NULL,
   `NickName` varchar(45) DEFAULT NULL,
-  `AddressID` int(11) DEFAULT NULL,
   `CreationDate` datetime NOT NULL,
   `LastModifiedAt` datetime DEFAULT NULL,
   `Active` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
-  KEY `FK_Collaborator_Address_idx` (`AddressID`),
-  CONSTRAINT `FK_Collaborator_Address` FOREIGN KEY (`AddressID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_Collaborator_Address` FOREIGN KEY (`ID`) REFERENCES `Address` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

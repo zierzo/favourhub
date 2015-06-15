@@ -1,6 +1,5 @@
 package com.favour.dome.entity;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -99,33 +98,6 @@ public class CountryTest {
 
     }
 
-    @Test
-    public void testCountryDuplicatedCreationNOK() {
-
-        EntityTransaction trx = em.getTransaction();
-
-        trx.begin();
-        try {
-            Country testCountry = new Country();
-            testCountry.setCountry("DuplicatedCountry");
-            em.persist(testCountry);
-
-            Country duplicatedCountry=new Country();
-            duplicatedCountry.setCountry("DuplicatedCountry");
-            em.persist(duplicatedCountry);
-
-            trx.commit();
-
-        }
-        catch (ConstraintViolationException vex) {
-            trx.rollback();
-        }
-        catch (Exception e) {
-            trx.rollback();
-            assertTrue("Unexpected exception " + e,true);
-        }
-
-    }
 
     @Test
     public void testCountryUpdateOk() {

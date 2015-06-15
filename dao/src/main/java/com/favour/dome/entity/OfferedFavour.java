@@ -50,4 +50,12 @@ public class OfferedFavour {
         result = 31 * result + (favour != null ? favour.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "OfferedFavour{" +
+                "id=" + id +
+                ", favour='" + favour + '\'' +
+                '}';
+    }
 }

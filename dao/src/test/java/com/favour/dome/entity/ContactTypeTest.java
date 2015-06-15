@@ -103,6 +103,7 @@ public class ContactTypeTest {
         try {
             ContactType testContactType = em.find(ContactType.class, TYPE_TO_UPDATE_ID);
             assertNotNull(testContactType);
+            assertEquals(TYPE_TO_UPDATE_NAME, testContactType.getType());
 
             testContactType.setType("UpdatedContactType");
             trx.commit();

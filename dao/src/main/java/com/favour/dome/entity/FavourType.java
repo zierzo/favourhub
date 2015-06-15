@@ -50,4 +50,12 @@ public class FavourType {
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "FavourType{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

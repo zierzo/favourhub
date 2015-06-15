@@ -51,4 +51,12 @@ public class Country {
         result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

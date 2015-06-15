@@ -88,5 +88,16 @@ public class Address {
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", country=" + country +
+                ", address='" + address + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }
 

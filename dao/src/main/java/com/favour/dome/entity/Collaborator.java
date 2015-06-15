@@ -31,6 +31,7 @@ public class Collaborator {
     private String nickName;
 
     @OneToOne(optional=false)
+    @JoinColumn(name="ID")
     @MapsId
     private Address address;
 
@@ -47,7 +48,7 @@ public class Collaborator {
     private Date creationDate;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="LastModifiedAt", nullable=false)
+    @Column(name="LastModifiedAt", nullable=true)
     private Date lastModifiedAt;
 
     @Column(name="Active", columnDefinition="BIT default b'0'", nullable=false)
@@ -176,6 +177,24 @@ public class Collaborator {
         result = 31 * result + (nickName != null ? nickName.hashCode() : 0);
         result = 31 * result + active.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Collaborator{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", address=" + address +
+                ", contactDetails=" + contactDetails +
+                ", offeredFavours=" + offeredFavours +
+                ", creationDate=" + creationDate +
+                ", lastModifiedAt=" + lastModifiedAt +
+                ", active=" + active +
+                '}';
     }
 }
 

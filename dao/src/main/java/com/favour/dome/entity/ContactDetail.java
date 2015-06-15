@@ -66,14 +66,40 @@ public class ContactDetail {
         this.active = active;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        ContactDetail that = (ContactDetail) o;
+
+        if (preferred != that.preferred) return false;
+        if (active != that.active) return false;
+        if (!id.equals(that.id)) return false;
+        if (contact != null ? !contact.equals(that.contact) : that.contact != null) return false;
+        return !(type != null ? !type.equals(that.type) : that.type != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (contact != null ? contact.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (preferred ? 1 : 0);
+        result = 31 * result + (active ? 1 : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactDetail{" +
+                "id=" + id +
+                ", contact='" + contact + '\'' +
+                ", type=" + type +
+                ", preferred=" + preferred +
+                ", active=" + active +
+                '}';
+    }
 }
 
-/*
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Contact` varchar(45) NOT NULL,
-  `ContactTypeID` int(11) NOT NULL,
-  `Preferred` bit(1) DEFAULT b'0',
-  `Active` bit(1) DEFAULT b'1',
-  `CollaboratorID` bigint(20) DEFAULT NULL,
- */
