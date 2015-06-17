@@ -19,9 +19,8 @@ CREATE TABLE Country (
 
 INSERT INTO Country (Country) VALUES ('ExistingCountry');
 INSERT INTO Country (Country) VALUES ('CountryToUpdate');
+INSERT INTO Country (Country) VALUES ('OtherCountry');
 INSERT INTO Country (Country) VALUES ('CountryToDelete');
-
-
 
 --
 -- Table structure for table Address
@@ -39,7 +38,6 @@ CREATE TABLE Address (
 INSERT INTO Address (City, CountryID, Address, ZipCode) VALUES ('ExistingCity',1,'Existing Address', 'Z1');
 INSERT INTO Address (City, CountryID, Address, ZipCode) VALUES ('CityToUpdate',2,'Address to update', 'Z2');
 INSERT INTO Address (City, CountryID, Address, ZipCode) VALUES ('CityToDelete',3,'Address to delete', 'Z3');
-
 
 --
 -- Table structure for table Collaborator
@@ -72,6 +70,7 @@ INSERT INTO Collaborator (Email, Password, FirstName, LastName, NickName, Creati
             TIMESTAMP('2015-06-10 09:00:25'), NULL, 1);
 
 
+
 --
 -- Table structure for table ContactType
 --
@@ -83,6 +82,7 @@ CREATE TABLE ContactType (
 
 INSERT INTO ContactType (Type) VALUES ('ExistingType');
 INSERT INTO ContactType (Type) VALUES ('TypeToUpdate');
+INSERT INTO ContactType (Type) VALUES ('OtherType');
 INSERT INTO ContactType (Type) VALUES ('TypeToDelete');
 
 --
@@ -108,9 +108,9 @@ INSERT INTO ContactDetail (Contact, contactTypeID, Preferred, Active, Collaborat
                           VALUES ('ContactToDelete',3,0,1,1);
 
 INSERT INTO ContactDetail (Contact, contactTypeID, Preferred, Active, CollaboratorID)
-                          VALUES ('ExistingContact',1,0,1,2);
+                          VALUES ('ExistingContact',1,1,1,2);
 INSERT INTO ContactDetail (Contact, contactTypeID, Preferred, Active, CollaboratorID)
-                          VALUES ('ExistingContact',1,0,1,3);
+                          VALUES ('ExistingContact',1,1,1,3);
 
 --
 -- Table structure for table FavourType

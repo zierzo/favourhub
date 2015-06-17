@@ -30,9 +30,8 @@ public class Collaborator {
     @Column(name="NickName", length=45)
     private String nickName;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="ID")
-    @MapsId
+    @OneToOne(optional=false, cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn(name="ID")
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

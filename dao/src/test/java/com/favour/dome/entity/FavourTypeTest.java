@@ -1,13 +1,8 @@
 package com.favour.dome.entity;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 import static org.junit.Assert.*;
 
@@ -31,6 +26,10 @@ public class FavourTypeTest {
     @BeforeClass
     public static void initialize() {
         emf = Persistence.createEntityManagerFactory("favourhub-test");
+    }
+
+    @Before
+    public void initializeEntityManager() {
         em = emf.createEntityManager();
     }
 
@@ -134,7 +133,7 @@ public class FavourTypeTest {
             tx.commit();
 
             tx.begin();
-            FavourType lookupType=em.find(FavourType.class,FAVOUR_TYPE_TO_UPDATE_ID);
+            FavourType lookupType=em.find(FavourType.class,FAVOUR_TYPE_TO_DELETE_ID);
             tx.commit();
 
             assertNull(lookupType);
@@ -146,9 +145,14 @@ public class FavourTypeTest {
         }
     }
 
+
+    @After
+    public void destroyEntityManager() {
+        em.close();
+    }
+
     @AfterClass
     public static void tearDown() {
-        em.close();
         emf.close();
     }
 }
